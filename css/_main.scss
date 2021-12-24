@@ -1,0 +1,52 @@
+/* variables */
+$main-pink: #f16d7f;
+$desctop-width: 1140px;
+
+/* mixins */
+@mixin normal-text {
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* main */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+html {
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  color: #5d5d5d;
+  font-weight: 300;
+}
+button {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: transparent;
+  border: none;
+}
+.wrap {
+  max-width: $desctop-width;
+  margin: 0 auto;
+}
+.container {
+  padding: 0px calc(50% - 1140px / 2);
+}
+.visually-hidden {
+  position: absolute;
+  left: -999999px;
+  width: 0px;
+  height: 0px;
+  visibility: hidden;
+}

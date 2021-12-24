@@ -1,0 +1,95 @@
+[
+  {
+    "id": "092C04C4",
+    "category": "women",
+    "brand": "Eazyway",
+    "name": "Тайтсы",
+    "cost": 2890,
+    "color": ["Черный/Черный", "Черный/Красный"],
+    "sizes": ["40/42", "42/44", "44/46"],
+    "photo": "MP002XW060O4_13625731_1_v1.jpg",
+    "preview": "MP002XW060O4_13625731_1_v2.jpg"
+  },
+  {
+    "id": "CD32D6F8",
+    "category": "women",
+    "brand": "New Balance",
+    "name": "Леггинсы NB Essentials Botanical Legging",
+    "cost": 2999,
+    "sizes": ["40/42", "42/44", "44/46", "46/48", "48/50"],
+    "photo": "NE007EWMSTP9_14530060_1_v1.jpg",
+    "preview": "NE007EWMSTP9_14530060_1_v2.jpg"
+  },
+  {
+    "id": "1ACC55DD",
+    "category": "women",
+    "brand": "Dali",
+    "name": "Джинсы",
+    "cost": 3199,
+    "sizes": ["40/42", "42", "42/44", "44", "44/46", "46"],
+    "photo": "RTLAAG699301_14109017_1_v1.jpg",
+    "preview": "RTLAAG699301_14109017_1_v2.jpg"
+  },
+  {
+    "id": "5846D302",
+    "category": "women",
+    "brand": "Dali",
+    "name": "Джинсы",
+    "cost": 3599,
+    "color": ["Мультиколор", "Голубой"],
+    "sizes": ["40/42", "42", "42/44"],
+    "photo": "RTLAAH106801_14109125_1_v1.jpg",
+    "preview": "RTLAAH106801_14109125_1_v2.jpg"
+  },
+  {
+    "id": "7B376F15",
+    "category": "women",
+    "brand": "Max&Co",
+    "name": "Пальто JET",
+    "cost": 38900,
+    "color": ["Черный", "Бежевый"],
+    "sizes": ["40", "42", "44", "46", "48"],
+    "photo": "RTLAAK612301_14538241_1_v1.jpg",
+    "preview": "RTLAAK612301_14538241_1_v2.jpg"
+  },
+  {
+    "id": "B838B70E",
+    "category": "women",
+    "brand": "Euros Style",
+    "name": "Куртка джинсовая",
+    "cost": 4500,
+    "sizes": ["42/46"],
+    "photo": "MP002XW06UN3_14130289_1_v1.jpg",
+    "preview": "MP002XW06UN3_14130289_1_v2.jpg"
+  },
+  {
+    "id": "14058BE1",
+    "category": "women",
+    "brand": "Love Republic",
+    "name": "Жакет",
+    "cost": 4599,
+    "sizes": ["40", "42", "44", "46", "48"],
+    "photo": "MP002XW06GQ5_13962734_1_v1.jpg",
+    "preview": "MP002XW06GQ5_13962734_1_v2.jpg"
+  },
+  {
+    "id": "CA3DADEC",
+    "category": "women",
+    "brand": "Sashyou",
+    "name": "Жакет",
+    "cost": 8900,
+    "sizes": ["40/42", "42/44", "44/46", "46/48", "48/50", "50/52"],
+    "photo": "MP002XW075PI_14315542_1_v1.jpg",
+    "preview": "MP002XW075PI_14315542_1_v2.jpg"
+  },
+  {
+    "id": "B7F325C0",
+    "category": "women",
+    "brand": "Adidas",
+    "name": "Костюм спортивный W TS CO ENERGIZ",
+    "cost": 7999,
+    "sizes": ["40/42", "42/44", "46/48", "48/50", "52/54"],
+    "photo": "AD002EWLUHE3_13165507_1_v1.jpg",
+    "preview": "AD002EWLUHE3_13165507_1_v2.jpg"
+  }
+]

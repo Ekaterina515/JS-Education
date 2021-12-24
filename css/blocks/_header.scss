@@ -1,0 +1,140 @@
+.header {
+  background-color: #222;
+  min-height: 74px;
+  color: #fff;
+  position: relative;
+}
+.header-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-left {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 19px;
+}
+
+.header-logo {
+  font-size: 44px;
+  margin-right: 41px;
+}
+/* header menu*/
+.header-right {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 19px;
+}
+.header-menu {
+  fill: #e8e8e8;
+  margin-right: 30px;
+
+  &:hover {
+    fill: $main-pink;
+  }
+}
+
+.nav {
+  position: absolute;
+  background-color: #ffffff;
+  box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21);
+  width: 232px;
+  min-height: 764px;
+  padding: 16px 34px;
+  right: 0;
+  top: 75px;
+  transform: translateX(100%);
+  transform-origin: right top;
+  transition: 0.5s;
+  z-index: 999;
+}
+
+.nav-overlay {
+  position: relative;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+}
+.nav-btn {
+  padding: 10px;
+  display: inline-block;
+}
+.nav-btn-menu {
+  fill: #6f6e6e;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  margin-right: 16px;
+  margin-top: 16px;
+
+  &:hover {
+    fill: $main-pink;
+  }
+}
+
+#toggle {
+  display: none;
+}
+#toggle:checked ~ .nav {
+  transform: scalex(1);
+}
+.nav-title {
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  margin-top: 9px;
+  margin-bottom: 24px;
+}
+.nav-heading {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #f16d7f;
+  margin-top: 9px;
+  margin-bottom: 12px;
+}
+.nav-list {
+  list-style: none;
+}
+.nav-item {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #6f6e6e;
+  margin-bottom: 12px;
+  margin-left: 21px;
+}
+a.nav-link {
+  text-decoration: none;
+  color: #6f6e6e;
+
+  &:hover {
+    color: $main-pink;
+  }
+}
+
+/* header menu*/
+.header-search {
+  fill: #e8e8e8;
+
+  &:hover {
+    fill: $main-pink;
+  }
+}
+.header-account {
+  fill: #e8e8e8;
+  margin-right: 30px;
+
+  &:hover {
+    fill: $main-pink;
+  }
+}
+.header-cart {
+  fill: #e8e8e8;
+  margin-right: 10px;
+}
+.header-cart:hover {
+  fill: $main-pink;
+}

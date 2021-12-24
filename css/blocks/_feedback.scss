@@ -1,0 +1,82 @@
+.feedback {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eee;
+  background-image: url(../img/feedback-bg.jpg);
+  min-height: 448px;
+  background-position: left bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #222224;
+}
+.feedback-content {
+  padding-top: 97px;
+  padding-bottom: 126px;
+  text-align: center;
+  margin-right: 223px;
+  width: 360px;
+}
+.feedback-img {
+  margin-bottom: 30px;
+}
+.feedback-text {
+  @include normal-text;
+  font-size: 20px;
+  line-height: 24px;
+}
+.feedback-highlight {
+  font-style: italic;
+}
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 557px;
+  margin-top: 150px;
+  margin-bottom: 156px;
+}
+.subscribe-text {
+  @include normal-text;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  padding-bottom: 32px;
+}
+.subscribe-highlight {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 40px;
+}
+.subscribe-button {
+  display: flex;
+  justify-content: center;
+}
+.text-btn {
+  height: 49px;
+  width: 256px;
+  border: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  background: #e1e1e1;
+  padding-left: 22px; /*padding: 10px 15px*/
+  font-size: 14px;
+  line-height: 17px;
+  color: #222224;
+}
+.subscribe-btn {
+  height: 49px;
+  width: 100px;
+  border: none;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  text-align: center;
+  background: $main-pink;
+  @include normal-text;
+  font-size: 14px;
+  color: #ffffff;
+
+  &:hover {
+    background: #e05c6e;
+  }
+}

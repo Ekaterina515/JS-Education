@@ -1,0 +1,35 @@
+/* features */
+.features {
+  background-color: #222224;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: #fbfbfb;
+  margin-top: 95px;
+}
+.feature {
+  width: 360px;
+  text-align: center;
+  margin-bottom: 104px;
+  margin-top: 104px;
+}
+
+.feature-icon {
+  fill: $main-pink;
+}
+.feature-title {
+  margin-top: 28px;
+  margin-bottom: 16px;
+  @include normal-text;
+  font-size: 20px;
+  line-height: 24px;
+  color: #fbfbfb;
+}
+.feature-desc {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #fbfbfb;
+}

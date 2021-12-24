@@ -1,0 +1,42 @@
+/* banner main page */
+.promo-banner {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f1e4e6;
+  margin-bottom: 65px;
+}
+
+.main-banner-img {
+  background-image: url(../img/main_banner.png);
+  width: 577px;
+  height: 764px;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+.promo-title {
+  max-width: 405px;
+  min-height: 93px;
+  border-left: 12px solid $main-pink;
+}
+.promo-text {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 58px;
+  color: #222222;
+  line-height: 1;
+  margin-left: 12px;
+}
+.promo-text-small {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 38px;
+}
+.promo-text-highlight {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 38px;
+  color: $main-pink;
+}
