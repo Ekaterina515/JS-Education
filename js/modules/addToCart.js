@@ -1,7 +1,7 @@
 const addToCart = () => {
   const addToCartBtn = document.querySelectorAll(".add-to-cart-btn");
 
-  console.log(addToCartBtn);
+  // console.log(addToCartBtn);
   // Создаем пустой массив для выбранных товаров
   const cart = [];
 
@@ -37,6 +37,9 @@ const addToCart = () => {
     button.addEventListener("click", (e) => {
       // В отдельную переменную записываем id выбранного товара
       const clickedId = e.target.closest(".card").dataset["id"];
+      const clickedName = e.target
+        .closest(".card") //он понимает какая это карточка
+        .querySelector(".products-name").textContent; //теперь он понимает какой элемент в карточке нам нужен
       addGoodsToCart(clickedId);
     });
   });

@@ -1,30 +1,27 @@
 const cartProductsSection = document.querySelector(".cart-products");
 
 const goodsList = JSON.parse(localStorage.getItem("cart"));
-console.log(goodsList);
+// console.log(goodsList);
 
 const renderGoodsToCart = (good) => {
-  const singleGood = `<div class="shopping-card">
-  <img
-    class="card__img"
-    width="262"
-    height="306"
-    src="img/product-3.png"
-    alt="MANGO PEOPLE T-SHIRT"
+  const singleGood = `<div class="shopping-card" data-id="${good.id}">
+  <img class="card__img" src="goods-image/${good.preview}" alt="${good.name}"
   />
   <div class="card__text-block">
     <h3 class="card__name">
-      MANGO PEOPLE <br />
-      T-SHIRT
-    </h3>
+     "${good.name}" </h3>
     <p class="card__item">
-      Price: <span class="card__item-pink"> $300 </span>
+      Price: <span class="card__item-pink">$${good.cost}</span>
     </p>
+    ${
+      good.color
+        ? '<p class="card__item"> Color: <span class="card__item-grey">' +
+          good.color +
+          "</span> </p>"
+        : ""
+    } 
     <p class="card__item">
-      Color: <span class="card__item-grey"> Red </span>
-    </p>
-    <p class="card__item">
-      Size: <span class="card__item-grey"> Xl </span>
+      Size: <span class="card__item-grey">${good.sizes}</span>
     </p>
     <p class="card__item">
       Quantity:
@@ -52,6 +49,27 @@ const renderGoodsToCart = (good) => {
   cartProductsSection.insertAdjacentHTML("beforeend", singleGood);
 };
 
-goodsList.forEach((itemGood) => {
-  renderGoodsToCart(itemGood);
-});
+//функция получения всех данных
+const getData = async () => {
+  const data = await fetch(
+    "https://brandshop-76eb2-default-rtdb.europe-west1.firebasedatabase.app/db.json"
+  );
+  return data.json();
+};
+
+const filterGoods = () => {
+  getData().then((data) => {
+    //преобразование всех данных в массив (чтобы применять методы обхода)
+    goodsList.forEach((item) => {
+      //элемент названеи не важно. Обходим каждый элемент из Local storage
+      data.filter(
+        //обходим каждый элемент из базы данных
+        (element) => {
+          if (item.id === element.id) renderGoodsToCart(element);
+          console.log(element); //сравниваем id Из LocalStorage с id Из базы данных
+        }
+      );
+    });
+  });
+};
+filterGoods();
