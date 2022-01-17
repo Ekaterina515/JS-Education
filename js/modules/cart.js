@@ -1,17 +1,20 @@
 const cartProductsSection = document.querySelector(".cart-products");
 
 const goodsList = JSON.parse(localStorage.getItem("cart"));
+
 // console.log(goodsList);
 
 const renderGoodsToCart = (good) => {
   const singleGood = `<div class="shopping-card" data-id="${good.id}">
-  <img class="card__img" src="goods-image/${good.preview}" alt="${good.name}"
+  <img class="card__img" src="${good.photo}" alt="${good.name}"
   />
   <div class="card__text-block">
     <h3 class="card__name">
      "${good.name}" </h3>
     <p class="card__item">
-      Price: <span class="card__item-pink">$${good.cost}</span>
+      Price: <span class="products-price" data-single-price="${good.price}">$${
+    good.price
+  }</span>
     </p>
     ${
       good.color
@@ -21,14 +24,13 @@ const renderGoodsToCart = (good) => {
         : ""
     } 
     <p class="card__item">
-      Size: <span class="card__item-grey">${good.sizes}</span>
+      Size: <span class="card__item-grey">${good.size}</span>
     </p>
     <p class="card__item">
       Quantity:
       <input
         value="1"
         min="1"
-        max="10"
         class="card__quantity"
         type="number"
       />
@@ -49,27 +51,87 @@ const renderGoodsToCart = (good) => {
   cartProductsSection.insertAdjacentHTML("beforeend", singleGood);
 };
 
-//функция получения всех данных
-const getData = async () => {
-  const data = await fetch(
-    "https://brandshop-76eb2-default-rtdb.europe-west1.firebasedatabase.app/db.json"
-  );
-  return data.json();
+const sumAllItems = (array, indicator) => {
+  //array - массив из LS или из карточекб indicator -булево значение
+  let totalPrice = 0;
+
+  if (indicator) {
+    array.forEach((card) => {
+      //Обходим/ребираем все карточки товаров
+      const productsPrice = +card // каждую карточку назвали card
+        .querySelector(".products-price") //в этой карточке ищем span .product price
+        .textContent.slice(1); //textContent - содержимое между тэгов и она выводится как строка, отрезаем $ от цены
+
+      totalPrice = totalPrice + productsPrice; //как ящик: к имеющему содержимому прибывляем все новые карточки
+    });
+  } else {
+    array.forEach((good) => {
+      totalPrice = totalPrice + +good.price;
+    });
+  }
+  document.querySelector(".cart-price-title-pink").textContent =
+    "$" + totalPrice;
 };
 
-const filterGoods = () => {
-  getData().then((data) => {
-    //преобразование всех данных в массив (чтобы применять методы обхода)
-    goodsList.forEach((item) => {
-      //элемент названеи не важно. Обходим каждый элемент из Local storage
-      data.filter(
-        //обходим каждый элемент из базы данных
-        (element) => {
-          if (item.id === element.id) renderGoodsToCart(element);
-          console.log(element); //сравниваем id Из LocalStorage с id Из базы данных
-        }
-      );
-    });
-  });
+const deleteFromCart = (index) => {
+  let newCart = goodsList.splice(2, 1);
+  console.log(newCart);
+  // localStorage.setItem("cart", JSON.stringify(newCart)); //зашифровываем в JSON
 };
-filterGoods();
+
+//функция получения всех данных
+// const getData = async () => {
+//   const data = await fetch(
+//     "https://brandshop-76eb2-default-rtdb.europe-west1.firebasedatabase.app/db.json"
+//   );
+//   return data.json();
+// };
+
+// const filterGoods = () => {
+// getData().then((data) => {
+cartProductsSection.innerHTML = ""; //обнуление всей корзины
+//преобразование всех данных в массив (чтобы применять методы обхода)
+goodsList.forEach((item) => renderGoodsToCart(item)); //отрисовка всех данных
+sumAllItems(goodsList, false);
+//элемент названеи не важно. Обходим каждый элемент из Local storage
+// data.filter(
+//обходим каждый элемент из базы данных
+// (element) => {
+//   if (item.id === element.id) renderGoodsToCart(element);
+// console.log(element); //сравниваем id Из LocalStorage с id Из базы данных
+
+//   );
+// });
+// });
+// };
+// filterGoods();
+
+//получение всех карточек в корзине из ЛокалСтораж
+const shoppingCards = document.querySelectorAll(".shopping-card"); //получение карточек после отрисовки
+const closeBtns = document.querySelectorAll(".card__close");
+
+//функция суммирования всех товаров в корзине
+shoppingCards.forEach((shoppingCard) => {
+  shoppingCard.addEventListener("change", (e) => {
+    const quantity = shoppingCard.querySelector(".card__quantity").value;
+    const singlePrice =
+      shoppingCard.querySelector(".products-price").dataset.singlePrice;
+    const totalSinglePrice = quantity * singlePrice;
+
+    shoppingCard.querySelector(".products-price").textContent =
+      "$" + totalSinglePrice;
+
+    sumAllItems(shoppingCards, true);
+  });
+});
+
+//навешивание обработчиков союытий на кнопку удаления карточек из корзины
+closeBtns.forEach((closeBtn, index) => {
+  closeBtn.addEventListener("click", (e) => {
+    deleteFromCart(index); //функция удаления из массива
+    // cartProductsSection.innerHTML = ""; //обнудение корзины
+    // const cartUpdate = JSON.parse(localStorage.getItem("cart")); //получение новых данных из массива
+    // cartUpdate.forEach((item) => renderGoodsToCart(item)); //отрисовка заново всех данных
+    // sumAllItems(cartUpdate, false);
+  });
+});
