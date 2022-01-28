@@ -48,7 +48,7 @@ const renderGoodsToCart = (good) => {
   </button>
 </div>`;
 
-  cartProductsSection.insertAdjacentHTML("beforeend", singleGood);
+  cartProductsSection.insertAdjacentHTML("beforeend", singleGood); //добавляем в верстку перед концом
 };
 
 const sumAllItems = (array, indicator) => {
@@ -66,17 +66,27 @@ const sumAllItems = (array, indicator) => {
     });
   } else {
     array.forEach((good) => {
-      totalPrice = totalPrice + +good.price;
+      totalPrice = totalPrice + +good.price; //переписываем, не возвращаем
     });
   }
   document.querySelector(".cart-price-title-pink").textContent =
     "$" + totalPrice;
 };
 
-const deleteFromCart = (index) => {
-  let newCart = goodsList.splice(2, 1);
-  console.log(newCart);
-  // localStorage.setItem("cart", JSON.stringify(newCart)); //зашифровываем в JSON
+const deleteFromCart = (id) => {
+  const goodsList = JSON.parse(localStorage.getItem("cart")); //получение текущей корзины после удаления товара
+  const newCart = goodsList.filter((itemCard) => itemCard.id !== id); //проверяем условие и ВОЗВРАЩАЕМ id в массив
+  localStorage.setItem("cart", JSON.stringify(newCart)); //переписываем под тем же ключом в JSON в local storage
+};
+
+const getArrayFromLs = () => {
+  //какая длина у масива из LocalStorage
+  if (JSON.parse(localStorage.getItem("cart")).length === 0) {
+    const p = document.createElement("p"); //создаем верстку
+    p.classList.add("empty-cart"); //добавляем p класс
+    p.textContent = "КОРЗИНА ПУСТА"; //добавляем текст
+    cartProductsSection.insertAdjacentElement("afterbegin", p); //как вариант - append - он добавляет в верстку все подряд
+  }
 };
 
 //функция получения всех данных
@@ -90,6 +100,7 @@ const deleteFromCart = (index) => {
 // const filterGoods = () => {
 // getData().then((data) => {
 cartProductsSection.innerHTML = ""; //обнуление всей корзины
+getArrayFromLs(); //функция вывода текста о пустой корзине
 //преобразование всех данных в массив (чтобы применять методы обхода)
 goodsList.forEach((item) => renderGoodsToCart(item)); //отрисовка всех данных
 sumAllItems(goodsList, false);
@@ -126,12 +137,19 @@ shoppingCards.forEach((shoppingCard) => {
 });
 
 //навешивание обработчиков союытий на кнопку удаления карточек из корзины
-closeBtns.forEach((closeBtn, index) => {
+closeBtns.forEach((closeBtn) => {
   closeBtn.addEventListener("click", (e) => {
-    deleteFromCart(index); //функция удаления из массива
-    // cartProductsSection.innerHTML = ""; //обнудение корзины
-    // const cartUpdate = JSON.parse(localStorage.getItem("cart")); //получение новых данных из массива
+    const card = e.target.closest(".shopping-card"); //получаем из верстки карточку (метод closest ищет у ближайших родственников)
+    const goodId = card.dataset["id"]; //забираем id
+
+    deleteFromCart(goodId); //функция удаления из корзины не нудный нам товар
+
+    card.remove(); //метод revome удаляет верстку ненужных карточек
+
+    // cartProductsSection.innerHTML = ""; //обнуление корзины
+    const cartUpdate = JSON.parse(localStorage.getItem("cart")); //получение новых данных из массива
     // cartUpdate.forEach((item) => renderGoodsToCart(item)); //отрисовка заново всех данных
-    // sumAllItems(cartUpdate, false);
+    sumAllItems(cartUpdate, false); //суммируем всю стоимость
+    getArrayFromLs(); //функция вывода текста о пустой корзине
   });
 });

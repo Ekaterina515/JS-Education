@@ -111,4 +111,3 @@ renderToPage();
 // }
 // getData();
 
-console.log(1);
