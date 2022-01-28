@@ -15,6 +15,20 @@ const getData = async () => {
 const renderToPage = () => {
   getData().then((data) => {
     data.forEach((item) => {
+      let sizes = "";
+      if (item.sizes !== undefined) {
+        item.sizes.forEach((size) => {
+          sizes += `<option value="${size}">${size}</option>`;
+        });
+      }
+
+      let colors = "";
+      if (item.color !== undefined) {
+        item.color.forEach((color) => {
+          colors += `<option value="${color}">${color}</option>`;
+        });
+      }
+
       const card = `<div class="card" data-id="${item.id}">
                 <div class="card-image">
                   <img
@@ -39,11 +53,14 @@ const renderToPage = () => {
                   </div>
                 </div>
                 <h3 class="products-name">${item.name}</h3>
-                <p class="products-desc">
-                  Known for her sculptural takes on traditional tailoring, Australian
-                  arbiter of cool Kym Ellery teams up with Moda Operandi.
-                </p>
-                <p class="products-price">$${item.cost}</p>
+ <p>Размер:<select class="products-sizes"> ${sizes}</select></p>
+  
+ ${
+   item.color !== undefined
+     ? `<p>Цвет:<select class="products-color"> ${colors}</select></p>`
+     : ""
+ }
+                <p>Цена: $<span class="products-price">${item.cost}</span></p>
               </div>`;
       productCard.insertAdjacentHTML("beforeend", card);
     });
@@ -94,4 +111,3 @@ renderToPage();
 // }
 // getData();
 
-console.log(1);

@@ -1,37 +1,36 @@
 const cartProductsSection = document.querySelector(".cart-products");
 
 const goodsList = JSON.parse(localStorage.getItem("cart"));
-console.log(goodsList);
+
+// console.log(goodsList);
 
 const renderGoodsToCart = (good) => {
-  const singleGood = `<div class="shopping-card">
-  <img
-    class="card__img"
-    width="262"
-    height="306"
-    src="img/product-3.png"
-    alt="MANGO PEOPLE T-SHIRT"
+  const singleGood = `<div class="shopping-card" data-id="${good.id}">
+  <img class="card__img" src="${good.photo}" alt="${good.name}"
   />
   <div class="card__text-block">
     <h3 class="card__name">
-      MANGO PEOPLE <br />
-      T-SHIRT
-    </h3>
+     "${good.name}" </h3>
     <p class="card__item">
-      Price: <span class="card__item-pink"> $300 </span>
+      Price: <span class="products-price" data-single-price="${good.price}">$${
+    good.price
+  }</span>
     </p>
+    ${
+      good.color
+        ? '<p class="card__item"> Color: <span class="card__item-grey">' +
+          good.color +
+          "</span> </p>"
+        : ""
+    } 
     <p class="card__item">
-      Color: <span class="card__item-grey"> Red </span>
-    </p>
-    <p class="card__item">
-      Size: <span class="card__item-grey"> Xl </span>
+      Size: <span class="card__item-grey">${good.size}</span>
     </p>
     <p class="card__item">
       Quantity:
       <input
         value="1"
         min="1"
-        max="10"
         class="card__quantity"
         type="number"
       />
@@ -49,9 +48,108 @@ const renderGoodsToCart = (good) => {
   </button>
 </div>`;
 
-  cartProductsSection.insertAdjacentHTML("beforeend", singleGood);
+  cartProductsSection.insertAdjacentHTML("beforeend", singleGood); //добавляем в верстку перед концом
 };
 
-goodsList.forEach((itemGood) => {
-  renderGoodsToCart(itemGood);
+const sumAllItems = (array, indicator) => {
+  //array - массив из LS или из карточекб indicator -булево значение
+  let totalPrice = 0;
+
+  if (indicator) {
+    array.forEach((card) => {
+      //Обходим/ребираем все карточки товаров
+      const productsPrice = +card // каждую карточку назвали card
+        .querySelector(".products-price") //в этой карточке ищем span .product price
+        .textContent.slice(1); //textContent - содержимое между тэгов и она выводится как строка, отрезаем $ от цены
+
+      totalPrice = totalPrice + productsPrice; //как ящик: к имеющему содержимому прибывляем все новые карточки
+    });
+  } else {
+    array.forEach((good) => {
+      totalPrice = totalPrice + +good.price; //переписываем, не возвращаем
+    });
+  }
+  document.querySelector(".cart-price-title-pink").textContent =
+    "$" + totalPrice;
+};
+
+const deleteFromCart = (id) => {
+  const goodsList = JSON.parse(localStorage.getItem("cart")); //получение текущей корзины после удаления товара
+  const newCart = goodsList.filter((itemCard) => itemCard.id !== id); //проверяем условие и ВОЗВРАЩАЕМ id в массив
+  localStorage.setItem("cart", JSON.stringify(newCart)); //переписываем под тем же ключом в JSON в local storage
+};
+
+const getArrayFromLs = () => {
+  //какая длина у масива из LocalStorage
+  if (JSON.parse(localStorage.getItem("cart")).length === 0) {
+    const p = document.createElement("p"); //создаем верстку
+    p.classList.add("empty-cart"); //добавляем p класс
+    p.textContent = "КОРЗИНА ПУСТА"; //добавляем текст
+    cartProductsSection.insertAdjacentElement("afterbegin", p); //как вариант - append - он добавляет в верстку все подряд
+  }
+};
+
+//функция получения всех данных
+// const getData = async () => {
+//   const data = await fetch(
+//     "https://brandshop-76eb2-default-rtdb.europe-west1.firebasedatabase.app/db.json"
+//   );
+//   return data.json();
+// };
+
+// const filterGoods = () => {
+// getData().then((data) => {
+cartProductsSection.innerHTML = ""; //обнуление всей корзины
+getArrayFromLs(); //функция вывода текста о пустой корзине
+//преобразование всех данных в массив (чтобы применять методы обхода)
+goodsList.forEach((item) => renderGoodsToCart(item)); //отрисовка всех данных
+sumAllItems(goodsList, false);
+//элемент названеи не важно. Обходим каждый элемент из Local storage
+// data.filter(
+//обходим каждый элемент из базы данных
+// (element) => {
+//   if (item.id === element.id) renderGoodsToCart(element);
+// console.log(element); //сравниваем id Из LocalStorage с id Из базы данных
+
+//   );
+// });
+// });
+// };
+// filterGoods();
+
+//получение всех карточек в корзине из ЛокалСтораж
+const shoppingCards = document.querySelectorAll(".shopping-card"); //получение карточек после отрисовки
+const closeBtns = document.querySelectorAll(".card__close");
+
+//функция суммирования всех товаров в корзине
+shoppingCards.forEach((shoppingCard) => {
+  shoppingCard.addEventListener("change", (e) => {
+    const quantity = shoppingCard.querySelector(".card__quantity").value;
+    const singlePrice =
+      shoppingCard.querySelector(".products-price").dataset.singlePrice;
+    const totalSinglePrice = quantity * singlePrice;
+
+    shoppingCard.querySelector(".products-price").textContent =
+      "$" + totalSinglePrice;
+
+    sumAllItems(shoppingCards, true);
+  });
+});
+
+//навешивание обработчиков союытий на кнопку удаления карточек из корзины
+closeBtns.forEach((closeBtn) => {
+  closeBtn.addEventListener("click", (e) => {
+    const card = e.target.closest(".shopping-card"); //получаем из верстки карточку (метод closest ищет у ближайших родственников)
+    const goodId = card.dataset["id"]; //забираем id
+
+    deleteFromCart(goodId); //функция удаления из корзины не нудный нам товар
+
+    card.remove(); //метод revome удаляет верстку ненужных карточек
+
+    // cartProductsSection.innerHTML = ""; //обнуление корзины
+    const cartUpdate = JSON.parse(localStorage.getItem("cart")); //получение новых данных из массива
+    // cartUpdate.forEach((item) => renderGoodsToCart(item)); //отрисовка заново всех данных
+    sumAllItems(cartUpdate, false); //суммируем всю стоимость
+    getArrayFromLs(); //функция вывода текста о пустой корзине
+  });
 });

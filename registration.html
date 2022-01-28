@@ -174,19 +174,40 @@
             <br />
 
             <label
-              ><input class="input-radio male" type="radio" name="gender" />
+              ><input
+                class="input-radio male"
+                type="radio"
+                name="gender"
+                id="radio-gender"
+              />
               Male&nbsp; &nbsp; &nbsp;</label
             >
             <label
-              ><input class="input-radio female" type="radio" name="gender" />
+              ><input
+                class="input-radio female"
+                type="radio"
+                name="gender"
+                id="radio-gender"
+              />
               Female</label
             >
 
             <p class="registration-content">Login details</p>
-            <input class="input-text" type="email" placeholder="Email" /> <br />
-            <input class="input-text" type="password" placeholder="Password" />
+            <input
+              class="input-text"
+              type="email"
+              placeholder="Email"
+              id="input-mail"
+            />
             <br />
-            <p class="registration-form-desc">
+            <input
+              class="input-text"
+              type="password"
+              placeholder="Password"
+              id="input-password"
+            />
+            <br />
+            <p class="registration-form-desc" id="input-desc">
               Please use 8 or more characters, with at least 1 number and a
               mixture of uppercase and lowercase letters
             </p>
@@ -334,6 +355,6 @@
         </a>
       </div>
     </footer>
-    <script src="js/main.js"></script>
+    <script src="js/modules/registration.js"></script>
   </body>
 </html>
