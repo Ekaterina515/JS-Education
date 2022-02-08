@@ -174,25 +174,46 @@
             <br />
 
             <label
-              ><input class="input-radio male" type="radio" name="gender" />
+              ><input
+                class="input-radio male"
+                type="radio"
+                name="gender"
+                id="radio-gender"
+              />
               Male&nbsp; &nbsp; &nbsp;</label
             >
             <label
-              ><input class="input-radio female" type="radio" name="gender" />
+              ><input
+                class="input-radio female"
+                type="radio"
+                name="gender"
+                id="radio-gender"
+              />
               Female</label
             >
 
             <p class="registration-content">Login details</p>
-            <input class="input-text" type="email" placeholder="Email" /> <br />
-            <input class="input-text" type="password" placeholder="Password" />
+            <input
+              class="input-text"
+              type="email"
+              placeholder="Email"
+              id="input-mail"
+            />
             <br />
-            <p class="registration-form-desc">
+            <input
+              class="input-text"
+              type="password"
+              placeholder="Password"
+              id="input-password"
+            />
+            <br />
+            <p class="registration-form-desc" id="input-desc">
               Please use 8 or more characters, with at least 1 number and a
               mixture of uppercase and lowercase letters
             </p>
 
-            <button class="registration-btn" type="submit">
-              JOIN NOW
+           <button class="registration-btn" type="submit">
+              REGISTRATION
               <svg
                 class="icon-arrow-right"
                 width="17"
@@ -212,8 +233,9 @@
                 />
               </svg>
             </button>
-          </form>
         </div>
+          </form>
+          
 
         <div class="registration-desc">
           <p class="registration-text">LOYALTY HAS ITS PERKS</p>
@@ -334,6 +356,9 @@
         </a>
       </div>
     </footer>
-    <script src="js/main.js"></script>
+    <div class="b-popup">
+            <div class="b-popup-content">Поздравляем с успешной регистрацией!</div>
+          </div>
+    <script src="js/modules/registration.js"></script>
   </body>
 </html>

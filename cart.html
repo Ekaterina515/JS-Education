@@ -165,38 +165,57 @@
 
         <div class="cart__info">
           <div class="shopping-form">
-            <h3 class="shopping-form-title">SHIPPING ADRESS</h3>
+            <h3 class="shopping-form-title">REGISTRATION INFORMATION:</h3>
 
             <form action="#">
               <input
-                class="input-text-cart"
-                type="text"
-                placeholder="Bangladesh"
-                disabled
+                class="input-text"
+                type="email"
+                placeholder="Email"
+                id="input-mail"
               />
-              <input class="input-text-cart" type="text" placeholder="State" />
+              <br />
               <input
-                class="input-text-cart"
+                class="input-text"
+                type="password"
+                placeholder="Password"
+                id="input-password"
+              />
+              <br />
+              <input
+                class="input-text"
                 type="text"
-                placeholder="Postcode / Zip"
+                id="input-phone"
+                placeholder="Phone"
+              />
+              <br />
+              <input
+                class="input-text"
+                type="text"
+                id="input-country"
+                placeholder="Country"
+              />
+              <br />
+              <input
+                class="input-text"
+                type="text"
+                id="input-address"
+                placeholder="Address"
               />
             </form>
-            <button class="cart-btn-submit" type="submit">GET A QUOTE</button>
+            <br />
           </div>
 
           <div class="cart-price">
             <div class="cart-content">
-              <p class="cart-price-info">SUB TOTAL&nbsp; &nbsp; &nbsp; $900</p>
               <h4 class="cart-price-title">
                 GRAND TOTAL &nbsp; &nbsp; &nbsp;
-                <span class="cart-price-title-pink">$900</span>
+                <span class="cart-price-title-pink"></span>
               </h4>
             </div>
             <div class="cart-content-down">
               <hr class="cart-hr" />
-              <button class="price-btn-submit" type="submit">
-                GET A QUOTE
-              </button>
+              <button class="price-btn-submit" type="submit">SEND</button>
             </div>
           </div>
         </div>
