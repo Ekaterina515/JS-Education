@@ -181,6 +181,7 @@
   flex-direction: column;
   padding: 37px 37px 37px 37px;
   margin-top: 67px;
+  margin-bottom: 32px;
   width: 360px;
   min-height: 214px;
   background-color: #f5f3f3;
@@ -240,7 +241,27 @@
   font-size: 16px;
   line-height: 19px;
   color: #ffffff;
-  margin-bottom: 5px;
+  margin-bottom: 50px;
+
+  &:hover {
+    transition-delay: 0s;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+.registration-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 273px;
+  min-height: 50px;
+  background-color: $main-pink;
+  padding: 15px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+  margin-bottom: 50px;
 
   &:hover {
     transition-delay: 0s;

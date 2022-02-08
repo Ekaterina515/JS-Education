@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registration</title>
+    <title>Personal Account</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -149,7 +149,7 @@
     <main>
       <section class="registration-title container">
         <div>
-          <h1 class="title-h1">REGISTRATION</h1>
+          <h1 class="title-h1">PERSONAL ACCOUNT</h1>
         </div>
       </section>
 
@@ -157,7 +157,29 @@
       <section class="registration container">
         <div class="registration-form">
           <form action="#">
-            <p class="registration-content">Your Name</p>
+            <h3 class="registration-content">LOGIN DETAILS:</h3>
+            <input
+              class="input-text"
+              type="email"
+              placeholder="Email"
+              id="input-mail"
+            />
+            <br />
+            <input
+              class="input-text"
+              type="password"
+              placeholder="Password"
+              id="input-password"
+            />
+            <br />
+            <p class="registration-form-desc" id="input-desc">
+              Please use 8 or more characters, with at least 1 number and a
+              mixture of uppercase and lowercase letters
+            </p>
+            <br />
+            <br />
+
+            <h3 class="registration-content">CONTACT DETAILS:</h3>
             <input
               class="input-text"
               type="text"
@@ -191,29 +213,35 @@
               />
               Female</label
             >
+          </form>
+        </div>
 
-            <p class="registration-content">Login details</p>
+        <div class="registration-desc">
+          <h3 class="shopping-form-title">ADDRESS INFORMATION:</h3>
+          <form action="#">
             <input
               class="input-text"
-              type="email"
-              placeholder="Email"
-              id="input-mail"
+              type="text"
+              id="input-phone"
+              placeholder="Phone"
             />
             <br />
             <input
               class="input-text"
-              type="password"
-              placeholder="Password"
-              id="input-password"
+              type="text"
+              id="input-country"
+              placeholder="Country"
             />
             <br />
-            <p class="registration-form-desc" id="input-desc">
-              Please use 8 or more characters, with at least 1 number and a
-              mixture of uppercase and lowercase letters
-            </p>
-
-           <button class="registration-btn" type="submit">
-              REGISTRATION
+            <input
+              class="input-text"
+              type="text"
+              id="input-address"
+              placeholder="Address"
+            />
+            <br />
+            <button class="registration-btn" type="submit">
+              SEND
               <svg
                 class="icon-arrow-right"
                 width="17"
@@ -233,82 +261,7 @@
                 />
               </svg>
             </button>
-        </div>
           </form>
-          
-
-        <div class="registration-desc">
-          <p class="registration-text">LOYALTY HAS ITS PERKS</p>
-          <p class="registration-text">
-            Get in on the loyalty program where you can earn points and unlock
-            serious perks. Starting with these as soon as you join:
-          </p>
-
-          <p class="registration-list">
-            <svg
-              class="registration-icon-check"
-              width="20"
-              height="16"
-              viewBox="0 0 20 16"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M19.8035 0H18.0904C17.8502 0 17.6222 0.111827 17.4752 0.303176L7.3702 13.2826L2.52481 7.05754C2.45151 6.96318 2.35808 6.88688 2.25153 6.83438C2.14499 6.78187 2.0281 6.75451 1.90963 6.75437H0.196467C0.032258 6.75437 -0.0584248 6.94572 0.0420614 7.07494L6.75503 15.6981C7.06874 16.1006 7.67166 16.1006 7.98782 15.6981L19.9579 0.318087C20.0584 0.191349 19.9677 0 19.8035 0Z"
-              /></svg
-            >15% off welcome offer
-          </p>
-          <p class="registration-list">
-            <svg
-              class="registration-icon-check"
-              width="20"
-              height="16"
-              viewBox="0 0 20 16"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M19.8035 0H18.0904C17.8502 0 17.6222 0.111827 17.4752 0.303176L7.3702 13.2826L2.52481 7.05754C2.45151 6.96318 2.35808 6.88688 2.25153 6.83438C2.14499 6.78187 2.0281 6.75451 1.90963 6.75437H0.196467C0.032258 6.75437 -0.0584248 6.94572 0.0420614 7.07494L6.75503 15.6981C7.06874 16.1006 7.67166 16.1006 7.98782 15.6981L19.9579 0.318087C20.0584 0.191349 19.9677 0 19.8035 0Z"
-              /></svg
-            >Free shipping, returns and exchanges on all orders
-          </p>
-          <p class="registration-list">
-            <svg
-              class="registration-icon-check"
-              width="20"
-              height="16"
-              viewBox="0 0 20 16"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M19.8035 0H18.0904C17.8502 0 17.6222 0.111827 17.4752 0.303176L7.3702 13.2826L2.52481 7.05754C2.45151 6.96318 2.35808 6.88688 2.25153 6.83438C2.14499 6.78187 2.0281 6.75451 1.90963 6.75437H0.196467C0.032258 6.75437 -0.0584248 6.94572 0.0420614 7.07494L6.75503 15.6981C7.06874 16.1006 7.67166 16.1006 7.98782 15.6981L19.9579 0.318087C20.0584 0.191349 19.9677 0 19.8035 0Z"
-              /></svg
-            >$10 off a purchase on your birthday
-          </p>
-          <p class="registration-list">
-            <svg
-              class="registration-icon-check"
-              width="20"
-              height="16"
-              viewBox="0 0 20 16"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M19.8035 0H18.0904C17.8502 0 17.6222 0.111827 17.4752 0.303176L7.3702 13.2826L2.52481 7.05754C2.45151 6.96318 2.35808 6.88688 2.25153 6.83438C2.14499 6.78187 2.0281 6.75451 1.90963 6.75437H0.196467C0.032258 6.75437 -0.0584248 6.94572 0.0420614 7.07494L6.75503 15.6981C7.06874 16.1006 7.67166 16.1006 7.98782 15.6981L19.9579 0.318087C20.0584 0.191349 19.9677 0 19.8035 0Z"
-              /></svg
-            >Early access to products
-          </p>
-          <p class="registration-list">
-            <svg
-              class="registration-icon-check"
-              width="20"
-              height="16"
-              viewBox="0 0 20 16"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M19.8035 0H18.0904C17.8502 0 17.6222 0.111827 17.4752 0.303176L7.3702 13.2826L2.52481 7.05754C2.45151 6.96318 2.35808 6.88688 2.25153 6.83438C2.14499 6.78187 2.0281 6.75451 1.90963 6.75437H0.196467C0.032258 6.75437 -0.0584248 6.94572 0.0420614 7.07494L6.75503 15.6981C7.06874 16.1006 7.67166 16.1006 7.98782 15.6981L19.9579 0.318087C20.0584 0.191349 19.9677 0 19.8035 0Z"
-              /></svg
-            >Exclusive offers & rewards
-          </p>
         </div>
       </section>
     </main>
@@ -356,9 +309,6 @@
         </a>
       </div>
     </footer>
-    <div class="b-popup">
-            <div class="b-popup-content">Поздравляем с успешной регистрацией!</div>
-          </div>
     <script src="js/modules/registration.js"></script>
   </body>
 </html>
