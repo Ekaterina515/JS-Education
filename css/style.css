@@ -216,7 +216,7 @@ a.nav-link:hover {
 
 .header-account {
   fill: #e8e8e8;
-  margin-right: 30px;
+  margin-right: 10px;
 }
 
 .header-account:hover {
@@ -2748,7 +2748,14 @@ a.pagination-items-link {
 .modal-open {
   display: flex !important;
 }
-
-.header-account img {
+.header-logout {
+  fill: #e8e8e8;
   margin-right: 10px;
+  display: none;
+}
+.warning {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: yellow;
+  /* display: none; */
 }
