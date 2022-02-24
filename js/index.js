@@ -20,3 +20,7 @@
 
 // const cart = JSON.parse(localStorage.getItem("cart"));
 // console.log(cart);
+
+// import { getData } from "./modules/getData";
+// console.log("index.js");
+// getData();
